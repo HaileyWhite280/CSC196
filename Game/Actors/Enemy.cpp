@@ -15,7 +15,7 @@ void Enemy::Update(float dt)
 		float turnAngle = nc::Vector2::SignedAngle(forward, direction.Normalized());
 		transform.rotation = transform.rotation + turnAngle * (3 * dt);
 
-		//transform.rotation = nc::Lerp(transform.rotation, transform.rotation + turnAngle, 2 * dt);
+		transform.rotation = nc::Lerp(transform.rotation, transform.rotation + turnAngle, 2 * dt);
 
 
 		float angle = nc::Vector2::Angle(forward, direction.Normalized());

@@ -69,7 +69,7 @@ void Player::Update(float dt)
 		nc::Transform t = children[1]->transform;
 		t.scale = 0.5;
 
-		std::unique_ptr<Projectiles> projectile = std::make_unique<Projectiles>(t, shape, 100); // engine->Get<nc::ResourceSystem>()->Get<nc::Shape>("projectile.txt")
+		std::unique_ptr<Projectiles> projectile = std::make_unique<Projectiles>(t, shape, 200); // engine->Get<nc::ResourceSystem>()->Get<nc::Shape>("projectile.txt")
 		projectile->tag = "Player";
 		scene->AddActor(std::move(projectile));
 		}

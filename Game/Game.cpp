@@ -110,7 +110,7 @@ void Game::Draw(Core::Graphics& graphics)
 		graphics.DrawString(300, 300 + static_cast<int>(std::sin(stateTimer * 5.0f) * 15.0f), "Centipede(TM)");
 
 		graphics.SetColor(nc::Color::orange);
-		graphics.DrawString(290, 400, "Press Space to Tab");
+		graphics.DrawString(290, 400, "Press Tab to Play");
 		break;
 	case Game::eState::StartGame:
 		break;
@@ -119,21 +119,21 @@ void Game::Draw(Core::Graphics& graphics)
 		graphics.DrawString(300, 300, "Stage 1");
 
 		graphics.SetColor(nc::Color::purple);
-		graphics.DrawString(290, 400, "Press Space to Tab");
+		graphics.DrawString(290, 400, "Press Tab to Play");
 		break;
 	case Game::eState::StartLevel2:
 		graphics.SetColor(nc::Color::orange);
 		graphics.DrawString(300, 300, "Stage 2");
 
 		graphics.SetColor(nc::Color::purple);
-		graphics.DrawString(290, 400, "Press Space to Tab");
+		graphics.DrawString(290, 400, "Press Tab to Play");
 		break;
 	case Game::eState::StartLevelBoss:
 		graphics.SetColor(nc::Color::orange);
 		graphics.DrawString(300, 300, "Final Stage");
 
 		graphics.SetColor(nc::Color::purple);
-		graphics.DrawString(290, 400, "Press Space to Tab");
+		graphics.DrawString(290, 400, "Press Tab to Play");
 		break;
 	case Game::eState::Game:
 		break;
@@ -178,9 +178,9 @@ void Game::UpdateLevelStart(float dt)
 
 		scene->AddActor(std::make_unique<Player>(nc::Transform{ nc::Vector2{400, 300}, 0, 3 }, shape, 300)); // engine->Get<nc::ResourceSystem>()->Get<nc::Shape>("player.txt")
 
-		for (size_t i = 0; i < 10; i++)
+		for (size_t i = 0; i < 3; i++)
 		{
-			scene->AddActor(std::make_unique<Enemy>(nc::Transform{ nc::Vector2{nc::RandomRange(0, 800), nc::RandomRange(0,300)}, nc::RandomRange(0, nc::TwoPi), 2 }, shape2, 300));
+			scene->AddActor(std::make_unique<Enemy>(nc::Transform{ nc::Vector2{nc::RandomRange(0, 800), nc::RandomRange(0,300)}, nc::RandomRange(0, nc::TwoPi), 2 }, shape2, 30));
 		}
 }
 
@@ -196,10 +196,10 @@ void Game::UpdateLevel2Start(float dt)
 
 	//scene->AddActor(std::make_unique<Player>(nc::Transform{ nc::Vector2{400, 300}, 0, 3 }, shape, 300)); // engine->Get<nc::ResourceSystem>()->Get<nc::Shape>("player.txt")
 
-	for (size_t i = 0; i < 10; i++)
+	for (size_t i = 0; i < 5; i++)
 	{
 		//add harder enemies
-		scene->AddActor(std::make_unique<Enemy>(nc::Transform{ nc::Vector2{nc::RandomRange(0, 800), nc::RandomRange(0,300)}, nc::RandomRange(0, nc::TwoPi), 2 }, engine->Get<nc::ResourceSystem>()->Get<nc::Shape>("betterEnemy.txt"), 10));
+		scene->AddActor(std::make_unique<Enemy>(nc::Transform{ nc::Vector2{nc::RandomRange(0, 800), nc::RandomRange(0,300)}, nc::RandomRange(0, nc::TwoPi), 2 }, engine->Get<nc::ResourceSystem>()->Get<nc::Shape>("betterEnemy.txt"), 150));
 	}
 }
 
@@ -213,7 +213,7 @@ void Game::UpdateLevelBossStart(float dt)
 	std::shared_ptr<nc::Shape> shape2 = std::make_shared<nc::Shape>(points, nc::Color{ 1, 1, 0 });
 
 
-	scene->AddActor(std::make_unique<Player>(nc::Transform{ nc::Vector2{400, 300}, 0, 3 }, shape, 300));
+	//scene->AddActor(std::make_unique<Player>(nc::Transform{ nc::Vector2{400, 300}, 0, 3 }, shape, 300));
 
 	for (size_t i = 0; i < 10; i++)
 	{
